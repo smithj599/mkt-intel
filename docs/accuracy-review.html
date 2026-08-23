@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<title>Vol &amp; Range Forecast — Daily Review</title>
+<style>
+:root {
+  --bg: #0d1117; --surface: #161b22; --surface-2: #1c2333; --border: #30363d;
+  --text: #c9d1d9; --muted: #8b949e;
+  --good: #3fb950; --bad: #f85149; --warn: #e3b341; --info: #58a6ff; --neutral: #8b949e;
+  --accent: #bc8cff;
+}
+:root[data-theme="light"] {
+  --bg: #f6f8fa; --surface: #ffffff; --surface-2: #eef1f4; --border: #d0d7de;
+  --text: #1f2328; --muted: #57606a;
+  --good: #1a7f37; --bad: #cf222e; --warn: #9a6700; --info: #0969da; --neutral: #57606a;
+  --accent: #8250df;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f6f8fa; --surface: #ffffff; --surface-2: #eef1f4; --border: #d0d7de;
+    --text: #1f2328; --muted: #57606a;
+    --good: #1a7f37; --bad: #cf222e; --warn: #9a6700; --info: #0969da; --neutral: #57606a;
+    --accent: #8250df;
+  }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'SF Mono', 'JetBrains Mono', Consolas, monospace;
+  font-size: 13px; line-height: 1.5; padding: 24px;
+}
+.wrap { max-width: 1000px; margin: 0 auto; }
+h1 { font-size: 1.5em; letter-spacing: -0.01em; margin-bottom: 2px; }
+.subtitle { color: var(--muted); font-size: 11px; margin-bottom: 20px; max-width: 70ch; }
+.tabs { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
+.tab {
+  background: var(--surface); border: 1px solid var(--border); color: var(--muted);
+  padding: 7px 14px; border-radius: 7px; font: inherit; font-size: 12px; cursor: pointer;
+}
+.tab.active { color: var(--text); border-color: var(--accent); background: var(--surface-2); }
+.tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.day-nav {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;
+}
+.day-nav button {
+  background: var(--surface); border: 1px solid var(--border); color: var(--text);
+  width: 30px; height: 30px; border-radius: 7px; font: inherit; cursor: pointer; font-size: 14px;
+}
+.day-nav button:disabled { opacity: 0.35; cursor: default; }
+.day-nav button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+select {
+  background: var(--surface); border: 1px solid var(--border); color: var(--text);
+  padding: 6px 10px; border-radius: 7px; font: inherit; font-size: 12px;
+}
+.day-stats { color: var(--muted); font-size: 11.5px; margin-left: auto; }
+.section { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.legend { display: flex; gap: 18px; flex-wrap: wrap; color: var(--muted); font-size: 11px; margin-bottom: 12px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.swatch { width: 16px; height: 2px; display: inline-block; }
+.empty { color: var(--muted); padding: 40px 0; text-align: center; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 10.5px; font-weight: 600; }
+.tag-good { background: color-mix(in srgb, var(--good) 20%, transparent); color: var(--good); }
+.tag-warn { background: color-mix(in srgb, var(--warn) 20%, transparent); color: var(--warn); }
+.tag-bad { background: color-mix(in srgb, var(--bad) 20%, transparent); color: var(--bad); }
+footer { color: var(--muted); font-size: 11px; margin-top: 20px; }
+</style>
+<div class="wrap">
+  <h1>Vol &amp; Range Forecast — Daily Review</h1>
+  <div class="subtitle">
+    Actual H1 price action against that day's forecast envelope. Solid gray = day open (anchor).
+    Dashed = H-L range median/75th (shown as a symmetric band around open — the forecast is a
+    single total-range number, not a directional call). Dotted = O-C move median/75th.
+  </div>
+
+  <div class="tabs" id="tabs"></div>
+
+  <div class="day-nav">
+    <button id="prevDay" aria-label="Previous day">&larr;</button>
+    <select id="daySelect"></select>
+    <button id="nextDay" aria-label="Next day">&rarr;</button>
+    <span class="day-stats" id="dayStats"></span>
+  </div>
+
+  <div class="section">
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--muted)"></span> Day open</span>
+      <span><span class="swatch" style="background:var(--info); border-top:2px dashed var(--info); height:0"></span> H-L median/75th</span>
+      <span><span class="swatch" style="background:var(--accent); border-top:2px dotted var(--accent); height:0"></span> O-C median/75th</span>
+      <span><span class="swatch" style="background:var(--good)"></span>/<span class="swatch" style="background:var(--bad)"></span> up/down candle</span>
+    </div>
+    <div id="chartHost"></div>
+  </div>
+
+  <footer>Generated 2026-08-23 16:23 &nbsp;·&nbsp; intraday data: yfinance H1 bars (display only — forecast/actual figures come from vol_range_accuracy.csv)</footer>
+</div>
+<script>
+const DATA = {"GOLD": {"label": "GOLD", "decimals": 1, "days": {}}, "EURUSD": {"label": "EUR/USD", "decimals": 5, "days": {}}, "GBPUSD": {"label": "GBP/USD", "decimals": 5, "days": {}}, "NQ": {"label": "NQ", "decimals": 1, "days": {}}, "US500": {"label": "US500", "decimals": 1, "days": {}}};
+const INSTRUMENTS = [];
+
+let currentInst = INSTRUMENTS[0] ? INSTRUMENTS[0][0] : null;
+let currentDates = [];
+let currentIdx = -1;
+
+function css(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+function renderTabs() {
+  const el = document.getElementById('tabs');
+  el.innerHTML = '';
+  for (const [key, label] of INSTRUMENTS) {
+    const b = document.createElement('button');
+    b.className = 'tab' + (key === currentInst ? ' active' : '');
+    b.textContent = label;
+    b.onclick = () => { currentInst = key; setupDays(); render(); renderTabs(); };
+    el.appendChild(b);
+  }
+}
+
+function setupDays() {
+  const inst = DATA[currentInst];
+  currentDates = inst ? Object.keys(inst.days).sort() : [];
+  currentIdx = currentDates.length ? currentDates.length - 1 : -1;
+  const sel = document.getElementById('daySelect');
+  sel.innerHTML = '';
+  for (const d of currentDates) {
+    const opt = document.createElement('option');
+    opt.value = d; opt.textContent = d;
+    sel.appendChild(opt);
+  }
+  if (currentIdx >= 0) sel.value = currentDates[currentIdx];
+}
+
+function fmtPct(v) { return (v === null || v === undefined) ? 'n/a' : v.toFixed(2) + '%'; }
+
+function render() {
+  const host = document.getElementById('chartHost');
+  const stats = document.getElementById('dayStats');
+  document.getElementById('prevDay').disabled = currentIdx <= 0;
+  document.getElementById('nextDay').disabled = currentIdx >= currentDates.length - 1;
+
+  if (currentIdx < 0) {
+    host.innerHTML = '<div class="empty">No days with both intraday data and a completed forecast yet for this instrument.</div>';
+    stats.textContent = '';
+    return;
+  }
+
+  const dateStr = currentDates[currentIdx];
+  document.getElementById('daySelect').value = dateStr;
+  const day = DATA[currentInst].days[dateStr];
+  const dec = DATA[currentInst].decimals;
+
+  const tag = day.actual_hl === null ? ''
+    : day.hl_within_med ? '<span class="tag tag-good">within median</span>'
+    : day.hl_within_75  ? '<span class="tag tag-warn">between median/75th</span>'
+    : '<span class="tag tag-bad">exceeded 75th</span>';
+  stats.innerHTML = `Actual H-L ${fmtPct(day.actual_hl)} (med ${fmtPct(day.fc_hl_med)} / 75th ${fmtPct(day.fc_hl_75)})`
+    + `  &nbsp;·&nbsp; O-C ${fmtPct(day.actual_oc)} (med ${fmtPct(day.fc_oc_med)} / 75th ${fmtPct(day.fc_oc_75)})  ${tag}`;
+
+  host.innerHTML = '';
+  host.appendChild(buildChart(day, dec));
+}
+
+function buildChart(day, dec) {
+  const W = 900, H = 380, padL = 60, padR = 16, padT = 16, padB = 26;
+  const candles = day.candles;
+  const open = day.open;
+
+  const refs = [];
+  if (day.fc_hl_med !== null) { refs.push(open * (1 + day.fc_hl_med / 200)); refs.push(open * (1 - day.fc_hl_med / 200)); }
+  if (day.fc_hl_75  !== null) { refs.push(open * (1 + day.fc_hl_75  / 200)); refs.push(open * (1 - day.fc_hl_75  / 200)); }
+  if (day.fc_oc_med !== null) { refs.push(open * (1 + day.fc_oc_med / 100)); refs.push(open * (1 - day.fc_oc_med / 100)); }
+  if (day.fc_oc_75  !== null) { refs.push(open * (1 + day.fc_oc_75  / 100)); refs.push(open * (1 - day.fc_oc_75  / 100)); }
+
+  let lo = Math.min(open, ...candles.map(c => c.l), ...refs);
+  let hi = Math.max(open, ...candles.map(c => c.h), ...refs);
+  const pad = (hi - lo) * 0.06 || open * 0.001;
+  lo -= pad; hi += pad;
+
+  const x = i => padL + (candles.length <= 1 ? 0 : i * (W - padL - padR) / (candles.length - 1));
+  const y = v => padT + (hi - v) / (hi - lo) * (H - padT - padB);
+  const candleW = Math.max(2, Math.min(10, (W - padL - padR) / candles.length * 0.6));
+
+  const svgns = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(svgns, 'svg');
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.setAttribute('width', '100%');
+  svg.setAttribute('height', H);
+  svg.style.display = 'block';
+
+  function line(y1val, color, dash) {
+    const l = document.createElementNS(svgns, 'line');
+    l.setAttribute('x1', padL); l.setAttribute('x2', W - padR);
+    l.setAttribute('y1', y(y1val)); l.setAttribute('y2', y(y1val));
+    l.setAttribute('stroke', color); l.setAttribute('stroke-width', 1.3);
+    if (dash) l.setAttribute('stroke-dasharray', dash);
+    svg.appendChild(l);
+  }
+  function yLabel(v, color) {
+    const t = document.createElementNS(svgns, 'text');
+    t.setAttribute('x', padL - 6); t.setAttribute('y', y(v) + 3);
+    t.setAttribute('text-anchor', 'end'); t.setAttribute('font-size', '9.5');
+    t.setAttribute('fill', color);
+    t.textContent = v.toFixed(dec);
+    svg.appendChild(t);
+  }
+
+  line(open, css('--muted'), null);
+  yLabel(open, css('--muted'));
+  if (day.fc_hl_med !== null) { line(open * (1 + day.fc_hl_med/200), css('--info'), '4,3'); line(open * (1 - day.fc_hl_med/200), css('--info'), '4,3'); }
+  if (day.fc_hl_75  !== null) { line(open * (1 + day.fc_hl_75/200),  css('--info'), '1,3'); line(open * (1 - day.fc_hl_75/200),  css('--info'), '1,3'); }
+  if (day.fc_oc_med !== null) { line(open * (1 + day.fc_oc_med/100), css('--accent'), '4,3'); line(open * (1 - day.fc_oc_med/100), css('--accent'), '4,3'); }
+  if (day.fc_oc_75  !== null) { line(open * (1 + day.fc_oc_75/100),  css('--accent'), '1,3'); line(open * (1 - day.fc_oc_75/100),  css('--accent'), '1,3'); }
+
+  candles.forEach((c, i) => {
+    const up = c.c >= c.o;
+    const color = up ? css('--good') : css('--bad');
+    const cx = x(i);
+    const wick = document.createElementNS(svgns, 'line');
+    wick.setAttribute('x1', cx); wick.setAttribute('x2', cx);
+    wick.setAttribute('y1', y(c.h)); wick.setAttribute('y2', y(c.l));
+    wick.setAttribute('stroke', color); wick.setAttribute('stroke-width', 1);
+    svg.appendChild(wick);
+
+    const bodyTop = y(Math.max(c.o, c.c));
+    const bodyBot = y(Math.min(c.o, c.c));
+    const rect = document.createElementNS(svgns, 'rect');
+    rect.setAttribute('x', cx - candleW / 2);
+    rect.setAttribute('y', bodyTop);
+    rect.setAttribute('width', candleW);
+    rect.setAttribute('height', Math.max(1, bodyBot - bodyTop));
+    rect.setAttribute('fill', color);
+    const title = document.createElementNS(svgns, 'title');
+    title.textContent = `${c.t}  O ${c.o.toFixed(dec)}  H ${c.h.toFixed(dec)}  L ${c.l.toFixed(dec)}  C ${c.c.toFixed(dec)}`;
+    rect.appendChild(title);
+    svg.appendChild(rect);
+
+    if (i % Math.ceil(candles.length / 10) === 0) {
+      const t = document.createElementNS(svgns, 'text');
+      t.setAttribute('x', cx); t.setAttribute('y', H - 8);
+      t.setAttribute('text-anchor', 'middle'); t.setAttribute('font-size', '9');
+      t.setAttribute('fill', css('--muted'));
+      t.textContent = c.t;
+      svg.appendChild(t);
+    }
+  });
+
+  return svg;
+}
+
+document.getElementById('prevDay').onclick = () => { if (currentIdx > 0) { currentIdx--; render(); } };
+document.getElementById('nextDay').onclick = () => { if (currentIdx < currentDates.length - 1) { currentIdx++; render(); } };
+document.getElementById('daySelect').onchange = (e) => { currentIdx = currentDates.indexOf(e.target.value); render(); };
+
+renderTabs();
+setupDays();
+render();
+</script>
+
+</body>
+</html>
