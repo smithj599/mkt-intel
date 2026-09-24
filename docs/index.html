@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<title>Daily Market Intelligence — Wednesday 23 Sep 2026, 07:05</title>
+<title>Daily Market Intelligence — Thursday 24 Sep 2026, 07:05</title>
 <style>
 :root {
   --bg: #0d1117; --surface: #161b22; --surface-2: #1c2333; --border: #30363d;
@@ -89,7 +89,7 @@ footer { color: var(--muted); font-size: 11px; margin-top: 28px; padding-top: 14
 </style>
 <div class="wrap">
   <h1>Daily Market Intelligence</h1>
-  <div class="subtitle">Generated Wednesday 23 Sep 2026, 07:05 &nbsp;·&nbsp; every number below traces back to a file the live pipeline already writes</div>
+  <div class="subtitle">Generated Thursday 24 Sep 2026, 07:05 &nbsp;·&nbsp; every number below traces back to a file the live pipeline already writes</div>
 
   <div class="status-bar">
     <div class="status-item">
@@ -104,38 +104,48 @@ footer { color: var(--muted); font-size: 11px; margin-top: 28px; padding-top: 14
     </div>
     <div class="status-item">
       <div class="status-label">Vol Regime (position sizing)</div>
-      <span class="pill pill-good">NORMAL</span>
-      <div class="status-desc">Triggers: no triggers active. Feeds InpVolFilter on LondonORB (risk scaled 0.5x when ELEVATED, if enabled).</div>
+      <span class="pill pill-bad">ELEVATED</span>
+      <div class="status-desc">Triggers: EUVL 98th pct > 60th, GBVL 94th pct > 60th. Feeds InpVolFilter on LondonORB (risk scaled 0.5x when ELEVATED, if enabled).</div>
     </div>
     
   </div>
 
   <h2>Today's Economic Calendar</h2>
-  <div class="section"><div class="text-good">No high-impact news today — clear calendar.</div></div>
+  <div class="section">
+                <div class="metric-row"><span>1:30am <span class="pill pill-warn">AUD</span> Employment Change</span>
+                <span class="tabular muted small">fcst 21.5K / prev -15.8K</span></div>
+                <div class="metric-row"><span>1:30am <span class="pill pill-warn">AUD</span> Unemployment Rate</span>
+                <span class="tabular muted small">fcst 4.5% / prev 4.5%</span></div>
+                <div class="metric-row"><span>7:30am <span class="pill pill-warn">CHF</span> SNB Monetary Policy Assessment</span>
+                <span class="tabular muted small">fcst — / prev —</span></div>
+                <div class="metric-row"><span>7:30am <span class="pill pill-warn">CHF</span> SNB Policy Rate</span>
+                <span class="tabular muted small">fcst 0.00% / prev 0.00%</span></div>
+                <div class="metric-row"><span>8:00am <span class="pill pill-warn">CHF</span> SNB Press Conference</span>
+                <span class="tabular muted small">fcst — / prev —</span></div></div>
 
   <h2>Vol &amp; Range Forecast — today's expected envelope</h2>
   <div class="grid-3">
     
         <div class="card">
           <div class="card-title">GOLD</div>
-          <div class="stat-big">21.66<span class="stat-unit">% ann. vol</span></div>
-          <div class="muted small">GCVL 23.0</div>
-          <div class="metric-row"><span>H-L range</span><span class="tabular">2.21% med / 2.81% 75th</span></div>
+          <div class="stat-big">21.89<span class="stat-unit">% ann. vol</span></div>
+          <div class="muted small">GCVL 23.2</div>
+          <div class="metric-row"><span>H-L range</span><span class="tabular">2.21% med / 2.79% 75th</span></div>
           <div class="metric-row"><span>O-C move</span><span class="tabular">0.98% med / 1.53% 75th</span></div>
         </div>
         <div class="card">
           <div class="card-title">EUR/USD</div>
-          <div class="stat-big">5.48<span class="stat-unit">% ann. vol</span></div>
-          <div class="muted small">EUVL 5.3 + GARCH 5.9</div>
-          <div class="metric-row"><span>H-L range</span><span class="tabular">0.47% med / 0.66% 75th</span></div>
-          <div class="metric-row"><span>O-C move</span><span class="tabular">0.22% med / 0.38% 75th</span></div>
+          <div class="stat-big">6.31<span class="stat-unit">% ann. vol</span></div>
+          <div class="muted small">EUVL 6.5 + GARCH 5.9</div>
+          <div class="metric-row"><span>H-L range</span><span class="tabular">0.50% med / 0.62% 75th</span></div>
+          <div class="metric-row"><span>O-C move</span><span class="tabular">0.21% med / 0.37% 75th</span></div>
         </div>
         <div class="card">
           <div class="card-title">NQ</div>
-          <div class="stat-big">21.13<span class="stat-unit">% ann. vol</span></div>
+          <div class="stat-big">21.15<span class="stat-unit">% ann. vol</span></div>
           <div class="muted small"></div>
-          <div class="metric-row"><span>H-L range</span><span class="tabular">1.46% med / 1.98% 75th</span></div>
-          <div class="metric-row"><span>O-C move</span><span class="tabular">0.46% med / 1.06% 75th</span></div>
+          <div class="metric-row"><span>H-L range</span><span class="tabular">1.64% med / 2.02% 75th</span></div>
+          <div class="metric-row"><span>O-C move</span><span class="tabular">0.60% med / 1.07% 75th</span></div>
         </div>
   </div>
 
@@ -148,10 +158,10 @@ footer { color: var(--muted); font-size: 11px; margin-top: 28px; padding-top: 14
   <div class="grid-3">
     
         <div class="card">
-          <div class="card-title">GOLD <span class="muted" style="text-transform:none; letter-spacing:0">(20d tracked)</span></div>
-          <svg width="220" height="48" viewBox="0 0 220 48" style="display:block; margin:8px 0"><polyline points="0.0,27.9 11.6,28.3 23.2,29.1 34.7,26.8 46.3,29.8 57.9,28.0 69.5,28.7 81.1,29.7 92.6,26.9 104.2,29.3 115.8,28.4 127.4,29.1 138.9,26.8 150.5,29.3 162.1,28.2 173.7,28.5 185.3,18.9 196.8,19.9 208.4,20.2 220.0,20.3" fill="none" stroke="var(--info)" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.7"/><polyline points="0.0,36.4 11.6,42.1 23.2,40.9 34.7,45.0 46.3,3.0 57.9,30.9 69.5,26.6 81.1,19.8 92.6,23.9 104.2,14.1 115.8,39.5 127.4,40.3 138.9,22.5 150.5,39.0 162.1,18.6 173.7,30.5 185.3,9.1 196.8,11.7 208.4,27.8 220.0,23.0" fill="none" stroke="var(--accent)" stroke-width="2"/></svg>
-          <div class="metric-row"><span>Actual ≤ median forecast</span><span class="tabular">11/20 (55%)</span></div>
-          <div class="metric-row"><span>Actual ≤ 75th forecast</span><span class="tabular">16/20 (80%)</span></div>
+          <div class="card-title">GOLD <span class="muted" style="text-transform:none; letter-spacing:0">(21d tracked)</span></div>
+          <svg width="220" height="48" viewBox="0 0 220 48" style="display:block; margin:8px 0"><polyline points="0.0,28.3 11.6,29.1 23.2,26.8 34.7,29.8 46.3,28.0 57.9,28.7 69.5,29.7 81.1,26.9 92.6,29.3 104.2,28.4 115.8,29.1 127.4,26.8 138.9,29.3 150.5,28.2 162.1,28.5 173.7,18.9 185.3,19.9 196.8,20.2 208.4,20.3 220.0,20.4" fill="none" stroke="var(--info)" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.7"/><polyline points="0.0,42.1 11.6,40.9 23.2,45.0 34.7,3.0 46.3,30.9 57.9,26.6 69.5,19.8 81.1,23.9 92.6,14.1 104.2,39.5 115.8,40.3 127.4,22.5 138.9,39.0 150.5,18.6 162.1,30.5 173.7,9.1 185.3,11.7 196.8,27.8 208.4,23.0 220.0,20.5" fill="none" stroke="var(--accent)" stroke-width="2"/></svg>
+          <div class="metric-row"><span>Actual ≤ median forecast</span><span class="tabular">12/21 (57%)</span></div>
+          <div class="metric-row"><span>Actual ≤ 75th forecast</span><span class="tabular">17/21 (81%)</span></div>
         </div>
         <div class="card">
           <div class="card-title">EUR/USD <span class="muted" style="text-transform:none; letter-spacing:0">(15d tracked)</span></div>
@@ -160,22 +170,22 @@ footer { color: var(--muted); font-size: 11px; margin-top: 28px; padding-top: 14
           <div class="metric-row"><span>Actual ≤ 75th forecast</span><span class="tabular">15/15 (100%)</span></div>
         </div>
         <div class="card">
-          <div class="card-title">GBP/USD <span class="muted" style="text-transform:none; letter-spacing:0">(19d tracked)</span></div>
-          <svg width="220" height="48" viewBox="0 0 220 48" style="display:block; margin:8px 0"><polyline points="0.0,9.6 12.2,8.9 24.4,3.7 36.7,3.0 48.9,8.9 61.1,17.5 73.3,10.2 85.6,3.7 97.8,6.9 110.0,6.3 122.2,14.8 134.4,9.6 146.7,8.3 158.9,6.9 171.1,6.3 183.3,14.8 195.6,9.6 207.8,3.7 220.0,6.9" fill="none" stroke="var(--info)" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.7"/><polyline points="0.0,30.2 12.2,31.2 24.4,15.4 36.7,41.8 48.9,12.3 61.1,31.7 73.3,36.7 85.6,27.5 97.8,14.1 110.0,14.5 122.2,38.9 134.4,42.7 146.7,45.0 158.9,13.8 171.1,21.2 183.3,15.7 195.6,29.1 207.8,31.3 220.0,31.0" fill="none" stroke="var(--accent)" stroke-width="2"/></svg>
-          <div class="metric-row"><span>Actual ≤ median forecast</span><span class="tabular">19/19 (100%)</span></div>
-          <div class="metric-row"><span>Actual ≤ 75th forecast</span><span class="tabular">19/19 (100%)</span></div>
+          <div class="card-title">GBP/USD <span class="muted" style="text-transform:none; letter-spacing:0">(20d tracked)</span></div>
+          <svg width="220" height="48" viewBox="0 0 220 48" style="display:block; margin:8px 0"><polyline points="0.0,9.6 11.6,8.9 23.2,3.7 34.7,3.0 46.3,8.9 57.9,17.5 69.5,10.2 81.1,3.7 92.6,6.9 104.2,6.3 115.8,14.8 127.4,9.6 138.9,8.3 150.5,6.9 162.1,6.3 173.7,14.8 185.3,9.6 196.8,3.7 208.4,6.9 220.0,6.3" fill="none" stroke="var(--info)" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.7"/><polyline points="0.0,30.2 11.6,31.2 23.2,15.4 34.7,41.8 46.3,12.3 57.9,31.7 69.5,36.7 81.1,27.5 92.6,14.1 104.2,14.5 115.8,38.9 127.4,42.7 138.9,45.0 150.5,13.8 162.1,21.2 173.7,15.7 185.3,29.1 196.8,31.3 208.4,31.0 220.0,38.6" fill="none" stroke="var(--accent)" stroke-width="2"/></svg>
+          <div class="metric-row"><span>Actual ≤ median forecast</span><span class="tabular">20/20 (100%)</span></div>
+          <div class="metric-row"><span>Actual ≤ 75th forecast</span><span class="tabular">20/20 (100%)</span></div>
         </div>
         <div class="card">
-          <div class="card-title">NQ <span class="muted" style="text-transform:none; letter-spacing:0">(19d tracked)</span></div>
-          <svg width="220" height="48" viewBox="0 0 220 48" style="display:block; margin:8px 0"><polyline points="0.0,23.7 12.2,3.9 24.4,25.0 36.7,20.0 48.9,23.4 61.1,28.4 73.3,25.0 85.6,20.9 97.8,23.4 110.0,27.7 122.2,25.0 134.4,19.1 146.7,3.0 158.9,23.7 171.1,27.7 183.3,25.0 195.6,18.8 207.8,24.3 220.0,27.7" fill="none" stroke="var(--info)" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.7"/><polyline points="0.0,13.6 12.2,26.4 24.4,33.7 36.7,37.7 48.9,30.6 61.1,10.2 73.3,39.5 85.6,15.8 97.8,45.0 110.0,34.2 122.2,38.3 134.4,21.0 146.7,21.0 158.9,17.9 171.1,40.0 183.3,17.7 195.6,12.1 207.8,37.0 220.0,30.1" fill="none" stroke="var(--accent)" stroke-width="2"/></svg>
-          <div class="metric-row"><span>Actual ≤ median forecast</span><span class="tabular">13/19 (68%)</span></div>
-          <div class="metric-row"><span>Actual ≤ 75th forecast</span><span class="tabular">18/19 (95%)</span></div>
+          <div class="card-title">NQ <span class="muted" style="text-transform:none; letter-spacing:0">(20d tracked)</span></div>
+          <svg width="220" height="48" viewBox="0 0 220 48" style="display:block; margin:8px 0"><polyline points="0.0,23.7 11.6,3.9 23.2,25.0 34.7,20.0 46.3,23.4 57.9,28.4 69.5,25.0 81.1,20.9 92.6,23.4 104.2,27.7 115.8,25.0 127.4,19.1 138.9,3.0 150.5,23.7 162.1,27.7 173.7,25.0 185.3,18.8 196.8,24.3 208.4,27.7 220.0,24.6" fill="none" stroke="var(--info)" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.7"/><polyline points="0.0,13.6 11.6,26.4 23.2,33.7 34.7,37.7 46.3,30.6 57.9,10.2 69.5,39.5 81.1,15.8 92.6,45.0 104.2,34.2 115.8,38.3 127.4,21.0 138.9,21.0 150.5,17.9 162.1,40.0 173.7,17.7 185.3,12.1 196.8,37.0 208.4,30.1 220.0,24.7" fill="none" stroke="var(--accent)" stroke-width="2"/></svg>
+          <div class="metric-row"><span>Actual ≤ median forecast</span><span class="tabular">14/20 (70%)</span></div>
+          <div class="metric-row"><span>Actual ≤ 75th forecast</span><span class="tabular">19/20 (95%)</span></div>
         </div>
         <div class="card">
-          <div class="card-title">US500 <span class="muted" style="text-transform:none; letter-spacing:0">(19d tracked)</span></div>
-          <svg width="220" height="48" viewBox="0 0 220 48" style="display:block; margin:8px 0"><polyline points="0.0,20.7 12.2,21.0 24.4,20.7 36.7,17.0 48.9,32.2 61.1,34.8 73.3,20.7 85.6,17.0 97.8,32.2 110.0,21.4 122.2,20.7 134.4,17.0 146.7,14.7 158.9,20.7 171.1,21.4 183.3,20.7 195.6,16.6 207.8,15.1 220.0,34.0" fill="none" stroke="var(--info)" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.7"/><polyline points="0.0,39.7 12.2,37.0 24.4,43.9 36.7,37.6 48.9,29.0 61.1,21.3 73.3,27.7 85.6,12.1 97.8,37.7 110.0,35.9 122.2,32.8 134.4,23.8 146.7,19.4 158.9,34.6 171.1,35.5 183.3,3.0 195.6,12.4 207.8,41.1 220.0,45.0" fill="none" stroke="var(--accent)" stroke-width="2"/></svg>
-          <div class="metric-row"><span>Actual ≤ median forecast</span><span class="tabular">14/19 (74%)</span></div>
-          <div class="metric-row"><span>Actual ≤ 75th forecast</span><span class="tabular">17/19 (89%)</span></div>
+          <div class="card-title">US500 <span class="muted" style="text-transform:none; letter-spacing:0">(20d tracked)</span></div>
+          <svg width="220" height="48" viewBox="0 0 220 48" style="display:block; margin:8px 0"><polyline points="0.0,20.7 11.6,21.0 23.2,20.7 34.7,17.0 46.3,32.2 57.9,34.8 69.5,20.7 81.1,17.0 92.6,32.2 104.2,21.4 115.8,20.7 127.4,17.0 138.9,14.7 150.5,20.7 162.1,21.4 173.7,20.7 185.3,16.6 196.8,15.1 208.4,34.0 220.0,30.7" fill="none" stroke="var(--info)" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.7"/><polyline points="0.0,39.7 11.6,37.0 23.2,43.9 34.7,37.6 46.3,29.0 57.9,21.3 69.5,27.7 81.1,12.1 92.6,37.7 104.2,35.9 115.8,32.8 127.4,23.8 138.9,19.4 150.5,34.6 162.1,35.5 173.7,3.0 185.3,12.4 196.8,41.1 208.4,45.0 220.0,22.9" fill="none" stroke="var(--accent)" stroke-width="2"/></svg>
+          <div class="metric-row"><span>Actual ≤ median forecast</span><span class="tabular">14/20 (70%)</span></div>
+          <div class="metric-row"><span>Actual ≤ 75th forecast</span><span class="tabular">17/20 (85%)</span></div>
         </div>
   </div>
 
@@ -193,32 +203,32 @@ footer { color: var(--muted); font-size: 11px; margin-top: 28px; padding-top: 14
     <div class="cvol-row">
             <div class="cvol-item">
               <div class="cvol-label">EUR/USD</div>
-              <div class="cvol-value">5.30<span class="stat-unit">% ann.</span></div>
-              <div class="cvol-chg text-bad">+0.01 today</div>
-              <div class="muted small">history: 48/30d — regime flag active</div>
+              <div class="cvol-value">6.49<span class="stat-unit">% ann.</span></div>
+              <div class="cvol-chg text-bad">+0.03 today</div>
+              <div class="muted small">history: 49/30d — regime flag active</div>
               <div class="muted small" style="margin-top:4px">vs GARCH 5.9: <span class="text-neutral">options roughly agree with recent stats</span></div>
             </div>
             <div class="cvol-item">
               <div class="cvol-label">GBP/USD</div>
-              <div class="cvol-value">5.51<span class="stat-unit">% ann.</span></div>
-              <div class="cvol-chg text-good">-0.04 today</div>
-              <div class="muted small">history: 48/30d — regime flag active</div>
+              <div class="cvol-value">6.61<span class="stat-unit">% ann.</span></div>
+              <div class="cvol-chg text-bad">+0.04 today</div>
+              <div class="muted small">history: 49/30d — regime flag active</div>
               
             </div>
             <div class="cvol-item">
               <div class="cvol-label">Gold</div>
-              <div class="cvol-value">22.97<span class="stat-unit">% ann.</span></div>
-              <div class="cvol-chg text-bad">+0.29 today</div>
-              <div class="muted small">history: 48/30d — regime flag active</div>
-              <div class="muted small" style="margin-top:4px">vs GARCH 18.6: <span class="text-warn">options pricing MORE than recent stats — a catalyst is expected</span></div>
+              <div class="cvol-value">23.25<span class="stat-unit">% ann.</span></div>
+              <div class="cvol-chg text-bad">+1.10 today</div>
+              <div class="muted small">history: 49/30d — regime flag active</div>
+              <div class="muted small" style="margin-top:4px">vs GARCH 18.7: <span class="text-warn">options pricing MORE than recent stats — a catalyst is expected</span></div>
             </div></div>
     <div class="metric-row" style="border-top:1px solid var(--border); margin-top:14px; padding-top:14px; border-bottom:none">
       <span><strong>Cross-asset coherence</strong> — is today's FX vol move systemic or isolated?</span>
     </div>
     
-            <div class="metric-row"><span>FX vol (avg |chg|)</span><span class="tabular">0.04</span></div>
-            <div class="metric-row"><span>Gold CVOL chg</span><span class="tabular">+0.29</span></div>
-            <div class="metric-row"><span>2Y yield CVOL chg</span><span class="tabular">+4.08</span></div>
+            <div class="metric-row"><span>FX vol (avg |chg|)</span><span class="tabular">0.02</span></div>
+            <div class="metric-row"><span>Gold CVOL chg</span><span class="tabular">+1.10</span></div>
+            <div class="metric-row"><span>2Y yield CVOL chg</span><span class="tabular">+3.39</span></div>
             <div class="muted small" style="margin-top:8px"><span class="text-neutral">Quiet across the board — no coherence signal to read today.</span></div>
   </div>
 
@@ -229,92 +239,92 @@ footer { color: var(--muted); font-size: 11px; margin-top: 28px; padding-top: 14
       
         <tr>
           <td class="mono">EUR/USD</td>
-          <td class="tabular">1.1431</td>
-          <td class="tabular text-bad">1.1465</td>
-          <td class="tabular text-good">1.1390</td>
-          <td class="tabular text-info">1.1515</td>
-          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:55%"></div><div class="wall-bar-dot" style="left:55%"></div></div></td>
-          <td class="muted small">2 DTE · 0h old</td>
+          <td class="tabular">1.1388</td>
+          <td class="tabular text-bad">1.1468</td>
+          <td class="tabular text-good">1.1368</td>
+          <td class="tabular text-info">1.1518</td>
+          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:21%"></div><div class="wall-bar-dot" style="left:21%"></div></div></td>
+          <td class="muted small">1 DTE · 0h old</td>
         </tr>
         <tr>
           <td class="mono">GBP/USD</td>
-          <td class="tabular">1.3317</td>
-          <td class="tabular text-bad">1.3495</td>
-          <td class="tabular text-good">1.3295</td>
-          <td class="tabular text-info">1.3420</td>
-          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:11%"></div><div class="wall-bar-dot" style="left:11%"></div></div></td>
-          <td class="muted small">16 DTE · 0h old</td>
+          <td class="tabular">1.3244</td>
+          <td class="tabular text-bad">1.3395</td>
+          <td class="tabular text-good">1.3195</td>
+          <td class="tabular text-info">1.3395</td>
+          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:24%"></div><div class="wall-bar-dot" style="left:24%"></div></div></td>
+          <td class="muted small">15 DTE · 0h old</td>
         </tr>
         <tr>
           <td class="mono">USD/JPY</td>
-          <td class="tabular">157.6080</td>
-          <td class="tabular text-bad">159.1918</td>
-          <td class="tabular text-good">157.3390</td>
-          <td class="tabular text-info">157.9517</td>
-          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:15%"></div><div class="wall-bar-dot" style="left:15%"></div></div></td>
+          <td class="tabular">157.8930</td>
+          <td class="tabular text-bad">159.0961</td>
+          <td class="tabular text-good">157.8561</td>
+          <td class="tabular text-info">157.8561</td>
+          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:3%"></div><div class="wall-bar-dot" style="left:3%"></div></div></td>
           <td class="muted small">1 DTE · 0h old</td>
         </tr>
         <tr>
           <td class="mono">USD/CHF</td>
-          <td class="tabular">0.8215</td>
-          <td class="tabular text-bad">0.8274</td>
-          <td class="tabular text-good">0.8110</td>
-          <td class="tabular text-info">0.8046</td>
-          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:64%"></div><div class="wall-bar-dot" style="left:64%"></div></div></td>
-          <td class="muted small">16 DTE · 0h old</td>
+          <td class="tabular">0.8241</td>
+          <td class="tabular text-bad">0.8271</td>
+          <td class="tabular text-good">0.8237</td>
+          <td class="tabular text-info">0.8042</td>
+          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:10%"></div><div class="wall-bar-dot" style="left:10%"></div></div></td>
+          <td class="muted small">15 DTE · 0h old</td>
         </tr>
         <tr>
           <td class="mono">AUD/USD</td>
-          <td class="tabular">0.7107</td>
-          <td class="tabular text-bad">0.7212</td>
-          <td class="tabular text-good">0.7012</td>
-          <td class="tabular text-info">0.7187</td>
-          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:48%"></div><div class="wall-bar-dot" style="left:48%"></div></div></td>
-          <td class="muted small">16 DTE · 0h old</td>
+          <td class="tabular">0.7039</td>
+          <td class="tabular text-bad">0.7063</td>
+          <td class="tabular text-good">0.7013</td>
+          <td class="tabular text-info">0.7188</td>
+          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:52%"></div><div class="wall-bar-dot" style="left:52%"></div></div></td>
+          <td class="muted small">15 DTE · 0h old</td>
         </tr>
         <tr>
           <td class="mono">USD/CAD</td>
-          <td class="tabular">1.4081</td>
-          <td class="tabular text-bad">1.4140</td>
-          <td class="tabular text-good">1.4041</td>
-          <td class="tabular text-info">1.3925</td>
-          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:41%"></div><div class="wall-bar-dot" style="left:41%"></div></div></td>
-          <td class="muted small">16 DTE · 0h old</td>
+          <td class="tabular">1.4103</td>
+          <td class="tabular text-bad">1.4142</td>
+          <td class="tabular text-good">1.4043</td>
+          <td class="tabular text-info">1.3985</td>
+          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:61%"></div><div class="wall-bar-dot" style="left:61%"></div></div></td>
+          <td class="muted small">15 DTE · 0h old</td>
         </tr>
         <tr>
           <td class="mono">GOLD</td>
-          <td class="tabular">4,382</td>
-          <td class="tabular text-bad">4,534</td>
-          <td class="tabular text-good">4,234</td>
-          <td class="tabular text-info">4,434</td>
-          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:49%"></div><div class="wall-bar-dot" style="left:49%"></div></div></td>
+          <td class="tabular">4,324</td>
+          <td class="tabular text-bad">4,536</td>
+          <td class="tabular text-good">4,236</td>
+          <td class="tabular text-info">4,436</td>
+          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:30%"></div><div class="wall-bar-dot" style="left:30%"></div></div></td>
           <td class="muted small">1 DTE · 0h old</td>
         </tr>
         <tr>
           <td class="mono">SILVER</td>
-          <td class="tabular">67.14</td>
-          <td class="tabular text-bad">69.97</td>
-          <td class="tabular text-good">64.97</td>
-          <td class="tabular text-info">64.97</td>
-          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:43%"></div><div class="wall-bar-dot" style="left:43%"></div></div></td>
-          <td class="muted small">2 DTE · 0h old</td>
+          <td class="tabular">64.62</td>
+          <td class="tabular text-bad">68.02</td>
+          <td class="tabular text-good">63.02</td>
+          <td class="tabular text-info">65.02</td>
+          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:32%"></div><div class="wall-bar-dot" style="left:32%"></div></div></td>
+          <td class="muted small">1 DTE · 0h old</td>
         </tr>
         <tr>
           <td class="mono">NQ</td>
-          <td class="tabular">30,728</td>
-          <td class="tabular text-bad">30,784</td>
-          <td class="tabular text-good">30,234</td>
-          <td class="tabular text-info">30,184</td>
-          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:90%"></div><div class="wall-bar-dot" style="left:90%"></div></div></td>
+          <td class="tabular">30,470</td>
+          <td class="tabular text-bad">30,892</td>
+          <td class="tabular text-good">30,442</td>
+          <td class="tabular text-info">30,542</td>
+          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:6%"></div><div class="wall-bar-dot" style="left:6%"></div></div></td>
           <td class="muted small">1 DTE · 0h old</td>
         </tr>
         <tr>
           <td class="mono">ES</td>
-          <td class="tabular">7,764</td>
-          <td class="tabular text-bad">7,849</td>
-          <td class="tabular text-good">7,624</td>
-          <td class="tabular text-info">7,674</td>
-          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:62%"></div><div class="wall-bar-dot" style="left:62%"></div></div></td>
+          <td class="tabular">7,709</td>
+          <td class="tabular text-bad">7,794</td>
+          <td class="tabular text-good">7,654</td>
+          <td class="tabular text-info">7,704</td>
+          <td><div class="wall-bar"><div class="wall-bar-fill" style="width:39%"></div><div class="wall-bar-dot" style="left:39%"></div></div></td>
           <td class="muted small">1 DTE · 0h old</td>
         </tr>
     </table>
@@ -326,22 +336,22 @@ footer { color: var(--muted); font-size: 11px; margin-top: 28px; padding-top: 14
       <h2>Yield Spread Divergence</h2>
       <div class="section">
         <div class="metric-row"><span>Status</span><span class="pill pill-neutral">NO DIVERGENCE</span></div>
-        <div class="metric-row"><span>US-DE 2Y spread</span><span class="tabular">+1.61%  (+0.19pp / 5d)</span></div>
-        <div class="metric-row"><span>EUR/USD</span><span class="tabular">1.14797  (-0.98% / 5d)</span></div>
+        <div class="metric-row"><span>US-DE 2Y spread</span><span class="tabular">+1.57%  (+0.09pp / 5d)</span></div>
+        <div class="metric-row"><span>EUR/USD</span><span class="tabular">1.14646  (-0.73% / 5d)</span></div>
         <div class="muted small" style="margin-top:8px">Spread and EUR/USD are moving together — no early-warning signal right now.</div></div>
     </div>
     <div>
       <h2>Asia Range — LondonORB context</h2>
-      <div class="section"><div class="metric-row"><span><strong>LondonORB today</strong></span><span>4 of 4 pairs will trade</span></div>
-            <div class="metric-row"><span>GBPUSD</span><span class="tabular">29.0 pips [BORDERLINE]</span><span class="pill pill-good">TRADE</span></div>
-            <div class="metric-row"><span>GBPJPY</span><span class="tabular">40.0 pips [BORDERLINE]</span><span class="pill pill-good">TRADE</span></div>
-            <div class="metric-row"><span>EURJPY</span><span class="tabular">36.4 pips [BORDERLINE]</span><span class="pill pill-good">TRADE</span></div>
-            <div class="metric-row"><span>USDJPY</span><span class="tabular">25.2 pips [NORMAL]</span><span class="pill pill-good">TRADE</span></div></div>
+      <div class="section"><div class="metric-row"><span><strong>LondonORB today</strong></span><span>1 of 4 pairs will trade</span></div>
+            <div class="metric-row"><span>GBPUSD</span><span class="tabular">21.0 pips [NORMAL]</span><span class="pill pill-good">TRADE</span></div>
+            <div class="metric-row"><span>GBPJPY</span><span class="tabular">85.9 pips [WIDE]</span><span class="pill pill-neutral">SKIP</span></div>
+            <div class="metric-row"><span>EURJPY</span><span class="tabular">73.6 pips [WIDE]</span><span class="pill pill-neutral">SKIP</span></div>
+            <div class="metric-row"><span>USDJPY</span><span class="tabular">56.0 pips [WIDE]</span><span class="pill pill-neutral">SKIP</span></div></div>
     </div>
   </div>
 
   <h2>Weekly Portfolio Signals</h2>
-  <div class="section"><div class="muted small" style="margin-bottom:8px">Generated 120.2h ago</div>
+  <div class="section"><div class="muted small" style="margin-bottom:8px">Generated 144.2h ago</div>
             <div class="metric-row"><span>EUR/USD</span><span class="pill pill-neutral">FLAT</span>
             <span class="tabular muted small">p=0.46</span></div>
             <div class="metric-row"><span>Gold</span><span class="pill pill-good">LONG</span>
@@ -352,8 +362,8 @@ footer { color: var(--muted); font-size: 11px; margin-top: 28px; padding-top: 14
             <span class="tabular muted small">p=0.45</span></div></div>
 
   <footer>
-    <span>oi_structure.ini: 2026-09-23T06:30:08.540597</span>
-    <span>daily_synthesis.json: 56 min ago</span>
+    <span>oi_structure.ini: 2026-09-24T06:30:08.759354</span>
+    <span>daily_synthesis.json: 59 min ago</span>
     <span>yield_spread_latest.json: 30 min ago</span>
     <span>todays_calendar.json: 20 min ago</span>
   </footer>
